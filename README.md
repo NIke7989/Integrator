@@ -1,62 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README - Spring Boot eCommerce</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        h1, h2 { color: #333; }
-        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
-        ul { padding-left: 20px; }
-    </style>
-</head>
-<body>
-    <h1>Spring Boot eCommerce Application</h1>
-    <p>A fully functional eCommerce platform built using Spring Boot.</p>
-    
-    <h2>Features</h2>
-    <ul>
-        <li>User authentication and authorization</li>
-        <li>Product catalog management</li>
-        <li>Shopping cart and checkout</li>
-        <li>Order processing and tracking</li>
-        <li>Admin dashboard for management</li>
-    </ul>
-    
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>Spring Boot & Spring Security</li>
-        <li>Spring Data JPA (Hibernate)</li>
-        <li>MySQL Database</li>
-        <li>Thymeleaf for UI</li>
-        <li>Bootstrap for styling</li>
-    </ul>
-    
-    <h2>Installation</h2>
-    <pre><code>git clone https://github.com/your-repo/spring-ecommerce.git
+# Maven Spring eCommerce Application
 
-cd spring-ecommerce
-mvn clean install</code></pre>
-    
-    <h2>Running the Application</h2>
-    <pre><code>mvn spring-boot:run</code></pre>
-    
-    <h2>Database Configuration</h2>
-    <p>Modify <code>application.properties</code> with your MySQL credentials:</p>
-    <pre><code>spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+This is a simple eCommerce application built using Spring Boot and Maven. The application allows users to browse products, add items to the shopping cart, and place orders. It features a clean architecture and can be easily extended with additional functionality.
+
+## Features
+
+- Product listing and detail view
+- Shopping cart management
+- Order placement and history
+- User authentication and authorization
+- Admin panel for product and order management
+
+## Tech Stack
+
+- **Backend**: Spring Boot
+- **Frontend**: Thymeleaf (or optional front-end frameworks like React)
+- **Database**: MySQL / H2 (for development)
+- **Build Tool**: Maven
+- **Dependency Injection**: Spring IoC
+- **Security**: Spring Security
+- **Logging**: SLF4J with Logback
+
+## Prerequisites
+
+Ensure the following tools are installed on your machine:
+
+- Java 11 or later
+- Maven
+- MySQL or H2 Database (for development)
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/ecommerce-app.git
+cd ecommerce-app
+
+Configure the Database
+
+    If using MySQL, create a database and update the application.properties file in src/main/resources/:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db
 spring.datasource.username=root
-spring.datasource.password=yourpassword</code></pre>
-    
-    <h2>API Endpoints</h2>
-    <ul>
-        <li><code>GET /api/products</code> - Retrieve all products</li>
-        <li><code>POST /api/cart</code> - Add item to cart</li>
-        <li><code>POST /api/orders</code> - Place an order</li>
-    </ul>
-    
-    <h2>License</h2>
-    <p>Distributed under the MIT License. See <code>LICENSE</code> for more details.</p>
-</body>
-</html>
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+
+    If using H2 for development, configure the database in application.properties:
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+Build and Run the Application
+
+    Build the project using Maven:
+
+mvn clean install
+
+    Run the Spring Boot application:
+
+mvn spring-boot:run
+
+The application will start at http://localhost:8080.
+Accessing the Application
+
+    User role: Login to view products and make purchases.
+    Admin role: Access the admin panel to manage products and orders.
+
+API Endpoints
+
+Here are some key API endpoints for your application:
+
+    GET /api/products - Get all products
+    GET /api/products/{id} - Get product details
+    POST /api/orders - Create an order
+    GET /api/orders/{id} - Get order details
+    POST /api/cart - Add product to cart
+
+Running Tests
+
+To run unit tests and integration tests:
+
+mvn test
+
+Contributing
+
+    Fork the repository
+    Create your feature branch (git checkout -b feature-name)
+    Commit your changes (git commit -am 'Add feature')
+    Push to the branch (git push origin feature-name)
+    Open a pull request
